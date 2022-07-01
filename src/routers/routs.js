@@ -15,21 +15,18 @@ rout.use(express.json());
 rout.use(cookiepersor());
 rout.use(express.urlencoded({ extended: true }));
 
-// rout.get("/",
-//     res.send("first page"));
+//get products
 rout.get("/products", async (req, res) => {
     const data = await Products.find({});
     // console.log("data ",data);
     res.send(data);
 
 });
+//add product
 rout.post("/products", async (req, res) => {
     try {
         // console.log("prd ", prd);
         const { name, category, img, describtion, amount, item, discount, image_details } = req.body;
-        // console.log("above insert : ");
-        // const inst = await DB.Products.insert({ name, category, img, describtion, amount, item, discount, image_details });
-        // console.log("below insert : ",inst);
         const reg = new Products({
             name,
             category,
@@ -41,9 +38,9 @@ rout.post("/products", async (req, res) => {
             image_details
         });
 
-        console.log("reg: " + reg);
+        // console.log("reg: " + reg);
         const savereg = await reg.save();
-        console.log("reg2: " + reg);
+        // console.log("reg2: " + reg);
         res.send(savereg);
     }
     catch (e) {
@@ -66,9 +63,9 @@ rout.get("/users", async (req, res) => {
 rout.post("/particular_users", async (req, res) => {
     try {
         const { _id } = req.body;
-        console.log("particular_users ", _id);
+        // console.log("particular_users ", _id);
         const reg = await Loginmens.findOne({ _id }, { "username": 1, "email": 1, "phoneno": 1, "messages": 1 });
-        console.log("reg ", reg);
+        // console.log("reg ", reg);
         res.send(reg);
     }
     catch (e) {
@@ -79,7 +76,7 @@ rout.post("/particular_users", async (req, res) => {
 rout.put("/user", async (req, res) => {
     try {
         const { _id, username, phoneno, email, password } = req.body;
-        console.log("edit user ", req.body)
+        // console.log("edit user ", req.body)
         //create an object of collection or model
         const obj = await Loginmens();
         if (obj) {

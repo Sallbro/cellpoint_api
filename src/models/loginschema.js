@@ -76,12 +76,13 @@ loginschema.pre("save", async function (next) {
 loginschema.methods.enc_pass = async function (data) {
     try {
         // const update = this.getUpdate();
-        console.log("findOneAndUpdate ");
+        // console.log("findOneAndUpdate ");
         const pass = await bcrypt.hash(data, 10);
         return pass;
     }
     catch (e) {
-        console.log("findOneAndUpdate error ", e);
+        res.send(e);
+        // console.log("findOneAndUpdate error ", e);
     }
 };
 loginschema.methods.getlogintoken = async function () {
@@ -113,24 +114,26 @@ loginschema.methods.addtocart = async function (newaddtocart) {
     try {
         this.addtocarts = this.addtocarts.concat({ ...newaddtocart });
         // console.log("thisaddtocart ", this.addtocarts);
-        console.log("newaddtocart ", newaddtocart);
+        // console.log("newaddtocart ", newaddtocart);
         await this.save();
         return this.addtocarts;
     }
     catch (e) {
-        console.log("newaddtocart errror ", e);
+        res.send(e);
+        // console.log("newaddtocart errror ", e);
     }
 }
 loginschema.methods.addtocartall = async function (newaddtocart) {
     try {
         this.addtocarts = newaddtocart;
-        console.log("thisaddtocart all ", this.addtocarts);
-        console.log("newaddtocart all ", newaddtocart);
+        // console.log("thisaddtocart all ", this.addtocarts);
+        // console.log("newaddtocart all ", newaddtocart);
         await this.save();
         return this.addtocarts;
     }
     catch (e) {
-        console.log("addtocartall errror ", e);
+        res.send(e);
+        // console.log("addtocartall errror ", e);
     }
 }
 loginschema.methods.address = async function (address) {

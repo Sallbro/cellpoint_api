@@ -38,15 +38,7 @@ const productschema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    image_details: [
-        // {
-        //     img: {
-        //         type: String,
-        //         required: true,
-        //         trim: true
-        //     }
-        // }
-    ]
+    image_details: []
 });
 
 

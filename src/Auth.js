@@ -9,15 +9,15 @@ const Authentication = async (req, res, next) => {
 
         if (!rootusers) {
             res.send("salman error");
-            console.log("salman error");
+            // console.log("salman error");
 
         } else {
-            console.log("rootusers",rootusers);
+            // console.log("rootusers",rootusers);
             req.rootusers_id = rootusers._id;
             req.token=token;
-            console.log("token: ",token);
-            console.log("rootusers_tokens ",rootusers.tokens);
-            console.log("rootusers_id ",rootusers._id);
+            // console.log("token: ",token);
+            // console.log("rootusers_tokens ",rootusers.tokens);
+            // console.log("rootusers_id ",rootusers._id);
             req.rootusers = rootusers;
 
         }
@@ -25,7 +25,7 @@ const Authentication = async (req, res, next) => {
     }
     catch (e) {
         res.status(400).send("auth error");
-        console.log("error found");
+        // console.log("error found");
     }
     next();
 }
