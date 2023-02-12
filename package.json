@@ -1,0 +1,29 @@
+{
+  "name": "reactapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "16.14.2"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.5",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.12",
+    "react-circular-progressbar": "^2.1.0",
+    "sass": "^1.53.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
