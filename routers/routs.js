@@ -15,10 +15,17 @@ rout.use(express.json());
 rout.use(cookiepersor());
 rout.use(express.urlencoded({ extended: true }));
 
+//get 
+rout.get("/",async(req,res)=>{
+    res.send("succ get req");
+
+});
+
 //get products
 rout.get("/products", async (req, res) => {
+    console.log("data prd ");
     const data = await Products.find({});
-    // console.log("data ",data);
+    console.log("data ",data);
     res.send(data);
 
 });
