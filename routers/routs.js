@@ -5,8 +5,8 @@ const Authentication = require("../Auth");
 const Loginmens = require("../models/loginschema");
 // product scheme 
 const Products = require("../models/productshema");
-const DB = process.env.DATABASE;
 
+const DB = process.env.DATABASE;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const cookiepersor = require('cookie-parser');
@@ -16,21 +16,26 @@ rout.use(cookiepersor());
 rout.use(express.urlencoded({ extended: true }));
 
 //get 
-rout.get("/",async(req,res)=>{
+rout.get("/", async (req, res) => {
     res.send("succ get req");
 
 });
 
 //get products
 rout.get("/products", async (req, res) => {
-    console.log("data prd ");
-    const data = await Products.find({});
-    console.log("data ",data);
-    res.send(data);
+    try {
+        console.log("data prd ", Products);
+        const data = await Products.find({});
+        console.log("data ", data);
+        res.send(data);
+    }
+    catch (e) {
+        res.send("err prd");
+    }
 
 });
 
-//delete user products
+//delete user products Authentication
 rout.delete("/order", async (req, res) => {
     try {
         const data = req.body._id;
@@ -43,18 +48,6 @@ rout.delete("/order", async (req, res) => {
     }
 })
 
-//get message
-rout.get("/message", async (req, res) => {
-    try {
-        const data = req.body._id;
-        const reg = await Loginmens.find({}, { "messages": 1 });
-        console.log("reg ", reg);
-        res.send(reg);
-    }
-    catch (e) {
-        res.send(e);
-    }
-})
 //get user message 
 rout.get("/user/message", async (req, res) => {
     try {
