@@ -22,7 +22,7 @@ rout.get("/", async (req, res) => {
 });
 
 //get products
-rout.get("/products", async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/products", async (req, res) => {
     try {
         console.log("data prd ", Products);
         const data = await Products.find({});
@@ -62,7 +62,7 @@ rout.get("/user/message", async (req, res) => {
 })
 
 //post login user
-rout.post("/login", async (req, res) => {
+rout.post("https://cellpoint-api.onrender.com/login", async (req, res) => {
     try {
         const email = req.body.email;
         const password = req.body.password;
@@ -115,12 +115,12 @@ rout.post("/login", async (req, res) => {
 
 
 //get login user
-rout.get("/login", (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/login", (req, res) => {
     res.render("login");
 });
 
 //post registration user
-rout.post("/registration", async (req, res) => {
+rout.post("https://cellpoint-api.onrender.com/registration", async (req, res) => {
     const regisdata = req.body;
     const username = req.body.username;
     const phoneno = req.body.phoneno;
@@ -151,23 +151,23 @@ rout.post("/registration", async (req, res) => {
     }
 });
 //get registration user
-rout.get("/registration", async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/registration", async (req, res) => {
     res.render('registration');
 });
 
 
 //get about
-rout.get("/about", Authentication, async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/about", Authentication, async (req, res) => {
     res.send(req.rootusers);
 });
 
 
 //get addtocart
-rout.get("/addtocart", Authentication, async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/addtocart", Authentication, async (req, res) => {
     res.send(req.rootusers);
 });
 
-rout.get("/payment", Authentication, async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/payment", Authentication, async (req, res) => {
     res.send(req.rootusers);
 });
 
@@ -191,7 +191,7 @@ rout.post("/add", Authentication, async (req, res) => {
     }
 })
 
-rout.post("/payment", Authentication, async (req, res) => {
+rout.post("https://cellpoint-api.onrender.com/payment", Authentication, async (req, res) => {
     try {
         if (res.status !== 400) {
             const { address } = req.body;
@@ -211,7 +211,7 @@ rout.post("/payment", Authentication, async (req, res) => {
 })
 
 //add all product
-rout.post("/addall", Authentication, async (req, res) => {
+rout.post("https://cellpoint-api.onrender.com/addall", Authentication, async (req, res) => {
     try {
         if (res.status !== 400) {
             const { usercarts } = req.body;
@@ -231,7 +231,7 @@ rout.post("/addall", Authentication, async (req, res) => {
 
 
 //contact page
-rout.post("/contact", Authentication, async (req, res) => {
+rout.post("https://cellpoint-api.onrender.com/contact", Authentication, async (req, res) => {
     try {
 
         const { username, email, message, phoneno } = req.body;
@@ -254,13 +254,13 @@ rout.post("/contact", Authentication, async (req, res) => {
 
 
 //get data
-rout.get("/getdata", Authentication, async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/getdata", Authentication, async (req, res) => {
     res.send(req.rootusers);
 });
 
 
 //logout user
-rout.get("/logout", Authentication, async (req, res) => {
+rout.get("https://cellpoint-api.onrender.com/logout", Authentication, async (req, res) => {
     try {
         req.rootusers.tokens = req.rootusers.tokens.filter((elem) => {
             console.log("elem :", elem)
