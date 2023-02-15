@@ -11,6 +11,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const cookiepersor = require('cookie-parser');
 const { redirect } = require('express/lib/response');
+const cors = require('cors');
+
 rout.use(express.json());
 rout.use(cookiepersor());
 rout.use(express.urlencoded({ extended: true }));
