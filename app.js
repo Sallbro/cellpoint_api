@@ -6,7 +6,11 @@ const db = require("./db/conn");
 const port = process.env.PORT || 5500;
 
 const rout = app.use(require('./routers/routs'));
-
+app.use(
+    cors({
+        origin: ["http://localhost:3000", "https://cellpoint-api.onrender.com"],
+    })
+)
 app.listen(port, () => {
     console.log(`connection succesful at port ${port}`);
 });

@@ -14,7 +14,11 @@ const { redirect } = require('express/lib/response');
 rout.use(express.json());
 rout.use(cookiepersor());
 rout.use(express.urlencoded({ extended: true }));
-
+rout.use(
+    cors({
+        origin: ["http://localhost:3000", "https://cellpoint.onrender.com"],
+    })
+)
 //get 
 rout.get("/", async (req, res) => {
     res.send("succ get req");
